@@ -3,6 +3,24 @@
 * Copyright 2013-2022 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-stylish-portfolio/blob/master/LICENSE)
 */
+
+// 全てのfade-inクラスを取得
+let fadeInElements = document.querySelectorAll('.fade-in');
+
+for (let i = 0; i < fadeInElements.length; i++){
+
+    window.addEventListener('scroll', function(){
+
+        const rect = fadeInElements[i].getBoundingClientRect().top;
+        const scroll = window.pageYOffset;
+        const offset = rect + scroll;
+        const windowHeight = window.innerHeight; 
+
+        if(scroll > offset - windowHeight + 200){
+          fadeInElements[i].classList.add('scroll-in');
+        }
+    });
+}
 window.addEventListener('DOMContentLoaded', event => {
 
     const sidebarWrapper = document.getElementById('sidebar-wrapper');
